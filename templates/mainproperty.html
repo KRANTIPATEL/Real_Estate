@@ -1,0 +1,32 @@
+{% include 'header.html' %}
+{% load static %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<div class="container my-5">
+  <div class="row">
+    {% for i in mainproperty %}
+    
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ i.img_link.url }}" class="card-img-top" alt="{{ i.title }}" height="300">
+          <div class="card-body">
+            <h5 class="card-title">{{ i.name }}</h5>
+            <p class="card-text">{{ i.location }}</p>
+            <p class="card-text">{{ i.area }}</p>
+            <p class="card-text">{{ i.Price }}</p>
+
+            <p class="text-muted">Posted by <a href="#">{{ i.WriterName }}</a></p>
+          </div>
+          <div class="card-footer text-center">
+            <p class="text-muted mb-2">{{ i.time }}</p>
+            <a class="btn btn-primary" href="{% url 'property_detail' i.id %}" role="button">Enquiry now</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+{% include 'footer.html' %}
